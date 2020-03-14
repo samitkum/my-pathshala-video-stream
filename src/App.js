@@ -1,26 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Header from "./components/header/header.component";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Grid from "@material-ui/core/Grid";
+import About from "./pages/About/about.component";
+import Homepage from "./pages/homepage/homepage.component";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Grid container justify="center" alignItems="center" spacing={10}>
+        <Grid item xs={12}>
+          <Grid container>
+            <Grid item xs={12}>
+              <Header />
+            </Grid>
+          </Grid>
+          <Switch>
+            <Route exact path="/" component={Homepage} />
+            <Route exact path="/about" component={About} />
+            <Route path="/" component={Homepage} />
+          </Switch>
+          <Grid item xs={12}>
+            Footer
+          </Grid>
+        </Grid>
+      </Grid>
+    </Router>
   );
-}
+};
 
 export default App;
