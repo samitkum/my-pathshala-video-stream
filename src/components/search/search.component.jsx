@@ -1,64 +1,43 @@
-import React, { Component } from "react";
+import React, { useState, useContext } from "react";
 import TextField from "@material-ui/core/TextField";
 import Paper from "@material-ui/core/Paper";
-import YoutubeApi from "../../api/youtube.api";
 import "./search.styles.scss";
-import youtubeApi from "../../api/youtube.api";
+import PathshalaContext from "../../context/pathshala/pathshala.context";
+import MediaCard from "../Error/Error.component";
 
-class Search extends Component {
-  state = {
-    searchItem: "",
-    channel: {},
-    videoLists: []
-  };
+const Search = () => {
+  const pathshalaContext = useContext(PathshalaContext);
+  const { channel, searchVideos } = pathshalaContext;
+  const [searchItem, setSearchItem] = useState("");
 
-  async componentDidMount() {
-    // get the Channel Id
-    let channelData = await YoutubeApi.get("search", {
-      params: {
-        part: "snippet",
-        //key: "AIzaSyD-zXrbWFvdeYR7yJ1N5usF8MQYhbXDyqE",
-        type: "channel",
-        q: "mypathshala"
-      }
-    });
-    // get the video details by using the Channel Id
-    this.setState({ channel: channelData.data.items[0].snippet });
-  }
-  handleSubmit = async e => {
+  // Submit the search Item to fetch the details
+  const handleSubmit = e => {
     e.preventDefault();
-    let response = await youtubeApi.get("search", {
-      params: {
-        part: "snippet",
-        //key: "AIzaSyD-zXrbWFvdeYR7yJ1N5usF8MQYhbXDyqE",
-        channelId: this.state.channel.channelId,
-        type: "video",
-        maxResults: "5",
-        q: this.state.searchItem
-      }
-    });
-    this.setState({ videoLists: response.data.items, searchItem: "" });
+    if (!searchItem) {
+      return <MediaCard />;
+    } else {
+      pathshalaContext.loading = true;
+      searchVideos(searchItem, channel.channelId);
+      setSearchItem("");
+    }
   };
 
-  handleChange = e => {
-    this.setState({ searchItem: e.target.value });
+  const handleChange = e => {
+    setSearchItem(e.target.value);
   };
 
-  render() {
-    console.log(this.state.videoLists);
-    return (
-      <Paper elevation={6} className="searchContainer">
-        <form onSubmit={this.handleSubmit}>
-          <TextField
-            fullWidth
-            label="Search..."
-            onChange={this.handleChange}
-            value={this.state.search}
-          />
-        </form>
-      </Paper>
-    );
-  }
-}
+  return (
+    <Paper elevation={6} className="searchContainer">
+      <form onSubmit={handleSubmit}>
+        <TextField
+          fullWidth
+          label="Search..."
+          onChange={handleChange}
+          value={searchItem}
+        />
+      </form>
+    </Paper>
+  );
+};
 
 export default Search;

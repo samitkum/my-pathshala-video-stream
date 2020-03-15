@@ -1,31 +1,38 @@
 import React from "react";
+import "./App.css";
 import Header from "./components/header/header.component";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import About from "./pages/About/about.component";
 import Homepage from "./pages/homepage/homepage.component";
+import VideoList from "./components/videoLists/videoLists.component";
+import PathshalaState from "./context/pathshala/pathshala.state";
+import SearchBar from "./components/search/search.component";
 
 const App = () => {
   return (
-    <Router>
-      <Grid container justify="center" alignItems="center" spacing={10}>
-        <Grid item xs={12}>
-          <Grid container>
-            <Grid item xs={12}>
-              <Header />
-            </Grid>
+    <PathshalaState>
+      <Router>
+        <Grid container spacing={4}>
+          <Grid item xs={12}>
+            <Header />
           </Grid>
-          <Switch>
-            <Route exact path="/" component={Homepage} />
-            <Route exact path="/about" component={About} />
-            <Route path="/" component={Homepage} />
-          </Switch>
+          <Grid item xs={12}>
+            <SearchBar />
+          </Grid>
+          <Grid item xs={12}>
+            <Switch>
+              <Route exact path="/" component={VideoList} />
+              <Route exact path="/about" component={About} />
+              <Route exact path="/video" component={Homepage} />
+            </Switch>
+          </Grid>
           <Grid item xs={12}>
             Footer
           </Grid>
         </Grid>
-      </Grid>
-    </Router>
+      </Router>
+    </PathshalaState>
   );
 };
 
