@@ -1,23 +1,17 @@
 import React, { useContext } from "react";
-import { Typography, Paper } from "@material-ui/core";
+import { MyPaper } from "./videoItem.styles";
+import Typography from "@material-ui/core/Typography";
 import PathshalaContext from "../../context/pathshala/pathshala.context";
 import { withRouter } from "react-router-dom";
-const VideoItem = ({ video, history, match }) => {
+const VideoItem = ({ video, history }) => {
   const pathshalaContext = useContext(PathshalaContext);
   const { fetchVideo } = pathshalaContext;
   return (
-    <Paper
+    <MyPaper
       elevation={12}
-      style={{
-        padding: "10px",
-        overflow: "hidden",
-        cursor: "pointer",
-        width: "100%",
-        height: "100%"
-      }}
       onClick={() => {
         fetchVideo(video);
-        history.push("/video");
+        history.push("/videoPlayer");
       }}
     >
       <img
@@ -28,7 +22,7 @@ const VideoItem = ({ video, history, match }) => {
       <Typography variant="subtitle1">
         <b>{video.snippet.title}</b>
       </Typography>
-    </Paper>
+    </MyPaper>
   );
 };
 

@@ -1,7 +1,12 @@
 import React, { useContext } from "react";
 import PathshalaContext from "../../context/pathshala/pathshala.context";
-import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
+import {
+  MyTypography,
+  MyPaperFrame,
+  MyPaperDescription
+} from "./videoDetail.styles";
+
 const VideoDetails = () => {
   const pathshalaContext = useContext(PathshalaContext);
   const { selectedVideo } = pathshalaContext;
@@ -9,32 +14,37 @@ const VideoDetails = () => {
     var video_src = `https://www.youtube.com/embed/${selectedVideo.id.videoId}`;
   } catch (err) {
     console.log(err.message);
-    return <div>No video Found with the search content</div>;
+    return (
+      <div style={{ padding: "24px" }}>
+        <Typography variant="h6" style={{ fontSize: "2vw" }}>
+          No video Found with the search content
+        </Typography>
+      </div>
+    );
   }
 
   return (
     <div>
-      <Paper elevation={6} style={{ width: "100%", height: "20vw" }}>
+      <MyPaperFrame elevation={6}>
         <iframe
+          tabIndex="-1"
           frameBorder="0"
           height="100%"
           width="100%"
           title="Video Player"
           src={video_src}
+          style={{ overflow: "hidden", objectFit: "contain" }}
+          allowFullScreen
         />
-      </Paper>
-      <hr />
-      <Paper elevation={6} style={{ padding: "15px" }}>
-        <Typography variant="h4">
+      </MyPaperFrame>
+      <MyPaperDescription>
+        <MyTypography variant="h6">
           {selectedVideo.snippet.title} - {selectedVideo.snippet.channelTitle}
-        </Typography>
+        </MyTypography>
         <Typography variant="subtitle1">
           {selectedVideo.snippet.channelTitle}
         </Typography>
-        <Typography variant="subtitle2">
-          {selectedVideo.snippet.description}
-        </Typography>
-      </Paper>
+      </MyPaperDescription>
     </div>
   );
 };

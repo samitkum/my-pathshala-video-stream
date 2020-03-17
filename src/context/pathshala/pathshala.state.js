@@ -1,7 +1,12 @@
 import React, { useReducer } from "react";
 import PathshalaReducer from "./pathshala.reducer";
 import PathshalaContext from "./pathshala.context";
-import { SEARCH_VIDEO, CHANNEL_DATA, SELECTED_VIDEO } from "../types";
+import {
+  SEARCH_VIDEO,
+  CHANNEL_DATA,
+  SELECTED_VIDEO,
+  DISPLAY_VIDEO_GRIDLIST_TILE
+} from "../types";
 import YoutubeApi from "../../api/youtube.api";
 
 const PathshalaState = props => {
@@ -10,7 +15,8 @@ const PathshalaState = props => {
     videoLists: [],
     channel: {},
     selectedVideo: null,
-    loading: true
+    loading: true,
+    displayVideoListTile: false
   };
 
   const [state, dispatch] = useReducer(PathshalaReducer, initialState);
@@ -64,6 +70,12 @@ const PathshalaState = props => {
       payload: video
     });
   };
+
+  const displayVideoGridListTile = () => {
+    dispatch({
+      type: DISPLAY_VIDEO_GRIDLIST_TILE
+    });
+  };
   return (
     <PathshalaContext.Provider
       value={{
@@ -72,9 +84,11 @@ const PathshalaState = props => {
         channel: state.channel,
         selectedVideo: state.selectedVideo,
         loading: state.loading,
+        displayVideoListTile: state.displayVideoListTile,
         searchVideos,
         fetchChannelData,
-        fetchVideo
+        fetchVideo,
+        displayVideoGridListTile
       }}
     >
       {props.children}
