@@ -9,6 +9,17 @@ import PathshalaState from "./context/pathshala/pathshala.state";
 import env from "dotenv";
 const App = () => {
   env.config();
+  if (!process.env.REACT_APP_API_KEY) {
+    alert(
+      "Please add REACT_APP_API_KEY as env variable and pass the Youtube API key"
+    );
+    return (
+      <div>
+        Please add REACT_APP_API_KEY as env variable and pass the youtube API
+        key
+      </div>
+    );
+  }
   return (
     <PathshalaState>
       <Router>
