@@ -1,7 +1,7 @@
 Search MyPathshala(Youtube Channel Name) Course Videos
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-This project is based on fetching the Youtube channel(I have used myPathshala channel here) data by using youtube API and then you can search any video of that channel inside it. create-react-app cli is used to bootstrap the project. There are some prequisite after cloning the project into your directory. It is SPA with responsive webpage.
+This project is based on fetching the Youtube channel(I have used myPathshala channel here) data by using youtube API and then you can search any video of that channel inside it. create-react-app cli is used to bootstrap the project. It is SPA with responsive webpage. There are some prequisite after cloning the project into your directory. 
 
 ## Prequisite
 1. Run "npm install" to install all the dependencies that are required to run this application.
