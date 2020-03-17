@@ -1,8 +1,25 @@
-<<<<<<< HEAD
+Search MyPathshala(Youtube Channel Name) Course Videos
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+This project is based on fetching the Youtube channel(I have used myPathshala channel here) data by using youtube API and then you can search any video of that channel inside it. create-react-app cli is used to bootstrap the project. There are some prequisite after cloning the project into your directory. It is SPA with responsive webpage.
 
+## Prequisite
+1. Run "npm install" to install all the dependencies that are required to run this application.
+2. Create a .env file and add a variable "REACT_APP_API_KEY" inside it.
+   REACT_APP_API_KEY -> This will store the youtube API key for you.
+   To know How to get the API key of Youtube. Please click on the below link.
+   https://developers.google.com/youtube/registering_an_application
+3.Run "npm start" to run the application.
+
+
+## Installation
+1. npm install
+
+## Note*
+I have added an alert inside the App.js file just to verify, if the user has created a .env file with "REACT_APP_API_KEY" variable.
+Feel free to remove that part from the code.
+
+## Available Scripts
 In the project directory, you can run:
 
 ### `npm start`
