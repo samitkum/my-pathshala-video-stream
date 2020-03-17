@@ -26,7 +26,7 @@ const PathshalaState = props => {
       let response = await YoutubeApi.get("search", {
         params: {
           part: "snippet",
-          key: "AIzaSyARBM1Oz31c6cOd9gBTmLrZw2OuGr7xruI",
+          key: process.env.REACT_APP_API_KEY,
           channelId: channelId,
           type: "video",
           maxResults: "10",
@@ -47,7 +47,7 @@ const PathshalaState = props => {
       let channelData = await YoutubeApi.get("search", {
         params: {
           part: "snippet",
-          key: "AIzaSyARBM1Oz31c6cOd9gBTmLrZw2OuGr7xruI",
+          key: process.env.REACT_APP_API_KEY,
           type: "channel",
           q: "mypathshala"
         }

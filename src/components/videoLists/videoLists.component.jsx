@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import PathshalaContext from "../../context/pathshala/pathshala.context";
 import VideListGridTile from "../videoListGridTiles/videoListGridTiles.component";
-import Spinner from "../Spinner/Spinner";
+import Spinner from "../spinner/Spinner";
 
 const VideoLists = () => {
   const pathshalaContext = useContext(PathshalaContext);

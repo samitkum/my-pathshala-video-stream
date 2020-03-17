@@ -3,7 +3,7 @@ import Grid from "@material-ui/core/Grid";
 
 import VideoDetail from "../../components/videoDetail/videoDetail.component";
 import PathshalaContext from "../../context/pathshala/pathshala.context";
-import Spinner from "../../components/Spinner/Spinner";
+import Spinner from "../../components/spinner/Spinner";
 import SearchBar from "../../components/search/search.component";
 const VideoLists = lazy(() =>
   import("../../components/videoLists/videoLists.component")

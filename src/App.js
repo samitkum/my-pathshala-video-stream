@@ -3,10 +3,12 @@ import "./App.css";
 import Header from "./components/header/header.component";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
-import About from "./pages/About/about.component";
-import Homepage from "./pages/Homepage/homepage.component";
+import About from "./pages/about/about.component";
+import Homepage from "./pages/homepage/homepage.component";
 import PathshalaState from "./context/pathshala/pathshala.state";
+import env from "dotenv";
 const App = () => {
+  env.config();
   return (
     <PathshalaState>
       <Router>
